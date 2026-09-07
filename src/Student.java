@@ -25,29 +25,55 @@ public class Student {
 
     public void setJmeno(String jmeno) {
         if (jmeno == null || jmeno.trim().isEmpty()) {
-            throw new IllegalArgumentException("Jméno nesmí být prázdné.");
+            throw new IllegalArgumentException("Mas jmeno blud?");
         }
         this.jmeno = jmeno;
     }
 
     public void setRocnik(int rocnik) {
         if (rocnik < 1 || rocnik > 4) {
-            throw new IllegalArgumentException("Ročník musí být v rozsahu 1 až 4.");
+            throw new IllegalArgumentException("more kam chodis");
         }
         this.rocnik = rocnik;
     }
 
     public void setPrumer(double prumer) {
         if (prumer < 1.0 || prumer > 5.0) {
-            throw new IllegalArgumentException("Průměr musí být v rozsahu 1.0 až 5.0.");
+            throw new IllegalArgumentException("1.0 až 5.0.");
         }
         this.prumer = prumer;
+    }
+
+    public void zlepsiPrumer(double oKolik) {
+        if (oKolik < 0) {
+            throw new IllegalArgumentException("Zlepsi to, nezhorsi bruder.");
+        }
+        this.prumer -= oKolik;
+        if (this.prumer < 1.0) {
+            this.prumer = 1.0;
+        }
+    }
+
+    public String klasifikace(double prumer){
+        if (prumer < 1.5) {
+            return "Výborný";
+        }
+        if (prumer < 2.5) {
+            return "Chvalitebný";
+        }
+        if (prumer < 3.5) {
+            return "Dobrý";
+        }
+        if (prumer < 4.5) {
+            return "Dostatečný";
+        }
+        else return "Nedostatečný";
     }
 
 
     @Override
     public String toString() {
-        return "Jmeno= <"+jmeno+">, Rocnik= <"+rocnik+"> , Prumer= <"+prumer+">";
+        return jmeno+" (rocnik = "+rocnik+", prumer = "+prumer+")";
     }
 
     @Override
