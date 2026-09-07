@@ -54,7 +54,7 @@ public class Student {
         }
     }
 
-    public String klasifikace(double prumer){
+    public String klasifikace(){
         if (prumer < 1.5) {
             return "Výborný";
         }
@@ -82,6 +82,9 @@ public class Student {
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
         return Double.compare(prumer, student.prumer) == 0 && Objects.equals(jmeno, student.jmeno);
+    }
+    public void popis(){
+        System.out.println(toString()+", klasifikace: "+klasifikace());
     }
 
 }
