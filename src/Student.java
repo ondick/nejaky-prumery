@@ -1,34 +1,38 @@
+import java.util.Locale;
 import java.util.Objects;
 
-public class Student {
-    private String jmeno;
+public class Student extends Osoba implements IVypisovatelny{
+    //private String jmeno;
     private int rocnik;
     private double prumer;
 
     public Student(String jmeno, int rocnik, double prumer) {
-        setJmeno(jmeno);
+        super(jmeno);
+        //setJmeno(jmeno);
         setRocnik(rocnik);
         setPrumer(prumer);
     }
 
 
-    public String getJmeno() {
+    /*public String getJmeno() {
         return jmeno;
-    }
+    }*/
+
     public int getRocnik() {
         return rocnik;
     }
+
     public double getPrumer() {
         return prumer;
     }
 
 
-    public void setJmeno(String jmeno) {
+    /*public void setJmeno(String jmeno) {
         if (jmeno == null || jmeno.trim().isEmpty()) {
             throw new IllegalArgumentException("Mas jmeno blud?");
         }
         this.jmeno = jmeno;
-    }
+    }*/
 
     public void setRocnik(int rocnik) {
         if (rocnik < 1 || rocnik > 4) {
@@ -73,7 +77,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return jmeno+" (rocnik = "+rocnik+", prumer = "+prumer+")";
+        return getJmeno()+" (rocnik = "+rocnik+", prumer = "+prumer+")";
     }
 
     @Override
@@ -81,10 +85,13 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return Double.compare(prumer, student.prumer) == 0 && Objects.equals(jmeno, student.jmeno);
+        return Double.compare(prumer, student.prumer) == 0 && Objects.equals(getJmeno(), student.getJmeno());
     }
     public void popis(){
         System.out.println(toString()+", klasifikace: "+klasifikace());
     }
 
+    @Override
+    public String radekVypisu() {
+        return String.format(Locale.US, "Student | %-15s | ročník %d | průměr %.2f", getJmeno(), rocnik, prumer);    }
 }
