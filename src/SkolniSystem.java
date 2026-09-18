@@ -3,28 +3,32 @@ import java.util.List;
 
 public class SkolniSystem {
     private List<Student> seznamStudentu;
+    private List<Osoba> listOsob;
+
 
     public SkolniSystem() {
         this.seznamStudentu = new ArrayList<>();
+        this.listOsob = new ArrayList<>();
     }
 
-    public void pridatStudenta(Student student) {
-        seznamStudentu.add(student);
+    public void pridatStudenta(Osoba osoba) {
+        listOsob.add(osoba);
     }
     public void vypsatStudenty() {
-        if (seznamStudentu.isEmpty()) {
+        if (listOsob.isEmpty()) {
             System.out.println("V systému zatím nejsou žádní studenti.");
             return;
         }
 
-            System.out.println(seznamStudentu.toString());
+
+            System.out.println(listOsob.toString());
 
     }
 
-    public Student najitDleJmena(String jmeno) {
-        for (Student s : seznamStudentu) {
-            if (s.getJmeno().equalsIgnoreCase(jmeno)) {
-                return s;
+    public Osoba najitDleJmena(String jmeno) {
+        for (Osoba o : listOsob) {
+            if (o.getJmeno().equalsIgnoreCase(jmeno)) {
+                return o;
             }
         }
         return null;

@@ -70,7 +70,7 @@ public class Main {
                 case 3:
                     System.out.print("Zadejte jméno hledaného studenta: ");
                     String hledaneJmeno = scanner.nextLine();
-                    Student nalezeny = system.najitDleJmena(hledaneJmeno);
+                    Osoba nalezeny = system.najitDleJmena(hledaneJmeno);
 
                     if (nalezeny != null) {
                         System.out.println("Student nalezen:");
@@ -82,7 +82,7 @@ public class Main {
                             System.out.print("Zadejte nový průměr: ");
                             try {
                                 double novyPrumer = Double.parseDouble(scanner.nextLine().replace(",", "."));
-                                nalezeny.setPrumer(novyPrumer);
+                                //nalezeny.setPrumer(novyPrumer);
                                 System.out.println("Průměr byl úspěšně změněn.");
                             } catch (Exception e) {
                                 System.out.println("Chyba: " + e.getMessage());
